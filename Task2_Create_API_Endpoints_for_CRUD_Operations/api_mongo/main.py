@@ -19,7 +19,7 @@ logger = logging.getLogger(__name__)
 load_dotenv()
 
 app = FastAPI(
-    title="Car Management API",
+    title="Ford data API",
     description="An API for managing car information with MongoDB integration",
     version="1.0.0"
 )
