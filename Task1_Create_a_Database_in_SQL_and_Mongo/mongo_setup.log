@@ -1,0 +1,49 @@
+2025-03-18 11:28:53,424 - WARNING - Collection car_logs does not exist
+2025-03-18 11:28:53,525 - WARNING - Collection unstructured_data does not exist
+2025-03-18 11:28:53,728 - INFO - MongoDB connection verified successfully
+2025-03-18 11:28:53,830 - INFO - Available collections: []
+2025-03-18 11:28:53,830 - INFO - MongoDB verification completed successfully
+2025-03-18 11:44:28,610 - WARNING - Collection car_logs does not exist
+2025-03-18 11:44:28,823 - WARNING - Collection unstructured_data does not exist
+2025-03-18 11:44:29,242 - INFO - MongoDB connection verified successfully
+2025-03-18 11:44:29,392 - INFO - Available collections: []
+2025-03-18 11:44:29,395 - INFO - MongoDB verification completed successfully
+2025-03-18 11:54:19,247 - INFO - Created collection: transmissions
+2025-03-18 11:54:19,574 - INFO - Created collection: fuel_types
+2025-03-18 11:54:19,921 - INFO - Created collection: cars
+2025-03-18 11:54:20,025 - INFO - Inserted transmission types
+2025-03-18 11:54:20,132 - INFO - Inserted fuel types
+2025-03-18 11:54:20,242 - INFO - Inserted sample car data
+2025-03-18 11:54:20,350 - INFO - Available collections: ['cars', 'transmissions', 'fuel_types']
+2025-03-18 11:54:20,472 - INFO - Document count in cars: 1
+2025-03-18 11:54:20,579 - INFO - Document count in transmissions: 3
+2025-03-18 11:54:20,684 - INFO - Document count in fuel_types: 4
+2025-03-18 11:54:20,796 - INFO - Sample document in cars: {'_id': ObjectId('67d942cc3c7643d3b352d156'), 'model': 'Civic', 'year': 2018, 'price': 16000, 'transmissionid': 1, 'mileage': 15000, 'fueltypeid': 1, 'tax': 130, 'mpg': 38.2, 'enginesize': 2}
+2025-03-18 11:54:20,899 - INFO - Sample document in transmissions: {'_id': ObjectId('67d942cb3c7643d3b352d14f'), 'transmission_type': 'Automatic'}
+2025-03-18 11:54:21,009 - INFO - Sample document in fuel_types: {'_id': ObjectId('67d942cc3c7643d3b352d152'), 'fuel_type': 'Petrol'}
+2025-03-18 11:54:21,010 - INFO - MongoDB setup completed successfully
+2025-03-18 11:56:14,142 - INFO - Collection transmissions already exists
+2025-03-18 11:56:14,461 - INFO - Created collection: fuel_types
+2025-03-18 11:56:14,655 - INFO - Inserted fuel types
+2025-03-18 11:56:14,773 - INFO - Collection cars already exists
+2025-03-18 11:56:15,229 - INFO - Available collections: ['cars', 'fuel_types', 'transmissions', 'fueltype']
+2025-03-18 11:56:15,353 - INFO - Document count in cars: 156
+2025-03-18 11:56:15,482 - INFO - Document count in fuel_types: 4
+2025-03-18 11:56:15,638 - INFO - Document count in transmissions: 3
+2025-03-18 11:56:15,814 - INFO - Document count in fueltype: 5
+2025-03-18 11:56:16,024 - INFO - Sample document in cars: {'_id': ObjectId('67d7045a3fcdb57564b712f8'), 'model': 'Fiesta', 'year': 2019, 'price': 16500, 'transmissionid': 2, 'mileage': 1482, 'fueltypeid': 2, 'tax': 145, 'mpg': 48.7, 'enginesize': 1}
+2025-03-18 11:56:16,129 - INFO - Sample document in fuel_types: {'_id': ObjectId('67d9433e4a6e3617ca29a4e8'), 'fuel_type': 'Petrol'}
+2025-03-18 11:56:16,237 - INFO - Sample document in transmissions: {'_id': ObjectId('67d7063b3fcdb57564b71397'), 'transmissionid': 2, 'transmissiontype': 'Automatic'}
+2025-03-18 11:56:16,359 - INFO - Sample document in fueltype: {'_id': ObjectId('67d705c23fcdb57564b71392'), 'fueltypeid': 2, 'fueltype': 'Petrol'}
+2025-03-18 11:56:16,360 - INFO - MongoDB setup completed successfully
+2025-03-18 11:57:46,063 - INFO - Collection transmissions already exists
+2025-03-18 11:57:46,161 - INFO - Collection fueltype already exists
+2025-03-18 11:57:46,254 - INFO - Collection cars already exists
+2025-03-18 11:57:46,348 - INFO - Available collections: ['cars', 'transmissions', 'fueltype']
+2025-03-18 11:57:46,460 - INFO - Document count in cars: 156
+2025-03-18 11:57:46,554 - INFO - Document count in transmissions: 3
+2025-03-18 11:57:46,653 - INFO - Document count in fueltype: 5
+2025-03-18 11:57:46,751 - INFO - Sample document in cars: {'_id': ObjectId('67d7045a3fcdb57564b712f8'), 'model': 'Fiesta', 'year': 2019, 'price': 16500, 'transmissionid': 2, 'mileage': 1482, 'fueltypeid': 2, 'tax': 145, 'mpg': 48.7, 'enginesize': 1}
+2025-03-18 11:57:46,844 - INFO - Sample document in transmissions: {'_id': ObjectId('67d7063b3fcdb57564b71397'), 'transmissionid': 2, 'transmissiontype': 'Automatic'}
+2025-03-18 11:57:46,937 - INFO - Sample document in fueltype: {'_id': ObjectId('67d705c23fcdb57564b71392'), 'fueltypeid': 2, 'fueltype': 'Petrol'}
+2025-03-18 11:57:46,938 - INFO - MongoDB setup completed successfully

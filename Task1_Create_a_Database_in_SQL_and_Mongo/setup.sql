@@ -1,36 +1,17 @@
-# Car Database Project
-
-This project implements a relational database system for managing car information using PostgreSQL and MongoDB. It includes tables for storing car details, transmission types, fuel types, and logging functionality.
-
-## ER Diagram
-
-The **Entity-Relationship (ER) Diagram** illustrates the structure and relationships of the database.
-
-[ER Diagram will be added here]
-
-## 1️⃣ PostgreSQL Database Setup
-
-### Step 1: Create Tables
-
-#### Transmissions Table
-```sql
-CREATE TABLE Transmissions (
+-- Create the Transmissions table
+CREATE TABLE IF NOT EXISTS Transmissions (
     TransmissionID SERIAL PRIMARY KEY,
     TransmissionType VARCHAR(50) UNIQUE
 );
-```
 
-#### FuelTypes Table
-```sql
-CREATE TABLE FuelTypes (
+-- Create the FuelTypes table
+CREATE TABLE IF NOT EXISTS FuelTypes (
     FuelTypeID SERIAL PRIMARY KEY,
     FuelType VARCHAR(50) UNIQUE
 );
-```
 
-#### Cars Table
-```sql
-CREATE TABLE Cars (
+-- Create the Cars table
+CREATE TABLE IF NOT EXISTS Cars (
     CarID SERIAL PRIMARY KEY,
     Model VARCHAR(255),
     Year INT,
@@ -44,23 +25,17 @@ CREATE TABLE Cars (
     FOREIGN KEY (TransmissionID) REFERENCES Transmissions(TransmissionID),
     FOREIGN KEY (FuelTypeID) REFERENCES FuelTypes(FuelTypeID)
 );
-```
 
-#### CarLogs Table
-```sql
-CREATE TABLE CarLogs (
+-- Create the CarLogs table (must be created before the trigger)
+CREATE TABLE IF NOT EXISTS CarLogs (
     LogID SERIAL PRIMARY KEY,
     CarID INT,
     LogDate TIMESTAMP DEFAULT NOW(),
     LogAction VARCHAR(50),
     FOREIGN KEY (CarID) REFERENCES Cars(CarID)
 );
-```
 
-### Step 2: Functions and Triggers
-
-#### AddNewCar Function
-```sql
+-- Function to add a new car
 CREATE OR REPLACE FUNCTION AddNewCar(
     p_Model VARCHAR(255),
     p_Year INT,
@@ -93,10 +68,8 @@ BEGIN
     VALUES (p_Model, p_Year, p_Price, v_TransmissionID, p_Mileage, v_FuelTypeID, p_Tax, p_MPG, p_EngineSize);
 END;
 $$ LANGUAGE plpgsql;
-```
 
-#### LogNewCar Trigger Function
-```sql
+-- Trigger function to log new car additions
 CREATE OR REPLACE FUNCTION LogNewCar() RETURNS TRIGGER AS $$
 BEGIN
     INSERT INTO CarLogs (CarID, LogDate, LogAction)
@@ -104,52 +77,39 @@ BEGIN
     RETURN NEW;
 END;
 $$ LANGUAGE plpgsql;
-```
 
-#### Create Trigger
-```sql
+-- Create trigger
 CREATE TRIGGER CarAdded
 AFTER INSERT ON Cars
 FOR EACH ROW
 EXECUTE FUNCTION LogNewCar();
-```
 
-## 2️⃣ MongoDB Integration
+-- Insert sample data
+INSERT INTO Transmissions (TransmissionType) VALUES 
+('Automatic'),
+('Manual'),
+('Semi-Automatic');
 
-### Setup MongoDB with Python
+INSERT INTO FuelTypes (FuelType) VALUES 
+('Petrol'),
+('Diesel'),
+('Electric'),
+('Hybrid');
 
-#### Install Dependencies
-```bash
-pip install pymongo python-dotenv
-```
+-- Insert a sample car using the AddNewCar function
+SELECT AddNewCar(
+    'Fiesta',
+    2019,
+    16500.00,
+    'Automatic',
+    1482,
+    'Petrol',
+    145,
+    48.7,
+    1.0
+);
 
-#### Connect to MongoDB
-```python
-from pymongo import MongoClient
-from dotenv import load_dotenv
-import os
-
-# Load environment variables
-load_dotenv()
-MONGO_URI = os.getenv("MONGO_URI")
-if not MONGO_URI:
-    raise ValueError("MONGO_URI environment variable is not set")
-
-mongo_client = MongoClient(MONGO_URI)
-mongo_db = mongo_client['car_database']
-
-# Initialize collections
-collections = ["car_logs", "unstructured_data"]
-for collection in collections:
-    if collection not in mongo_db.list_collection_names():
-        mongo_db.create_collection(collection)
-        print(f"Created collection: {collection}")
-```
-
-## 📌 Final Queries for Verification
-
-```sql
--- Check database tables
+-- Verify the setup
 SELECT table_name 
 FROM information_schema.tables 
 WHERE table_schema = 'public';
@@ -161,7 +121,4 @@ SELECT 'FuelTypes', COUNT(*) FROM FuelTypes
 UNION ALL
 SELECT 'Cars', COUNT(*) FROM Cars
 UNION ALL
-SELECT 'CarLogs', COUNT(*) FROM CarLogs;
-```
-
-## **The End! thank you**
+SELECT 'CarLogs', COUNT(*) FROM CarLogs; 
