@@ -9,7 +9,11 @@ from database import get_db, engine
 # Create tables
 models.Base.metadata.create_all(bind=engine)
 
-app = FastAPI()
+app = FastAPI(title="Car API", description="API for managing car inventory")
+
+@app.get("/")
+async def root():
+    return {"message": "Welcome to the Car API", "status": "running"}
 
 @app.post("/cars/", response_model=schemas.Car)
 def create_car(car: schemas.CarCreate, db: Session = Depends(get_db)):
